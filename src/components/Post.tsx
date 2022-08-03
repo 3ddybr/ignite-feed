@@ -25,7 +25,7 @@ interface PostProps {
 }
 
 export function Post({ author, publishedAt, content }: PostProps) {
-  const [comments, setComments] = useState<any[]>(['Post muito bacana'])
+  const [comments, setComments] = useState(['Post muito bacana'])
   const [newCommentText, setNewCommentText] = useState('')
 
 
@@ -58,8 +58,6 @@ export function Post({ author, publishedAt, content }: PostProps) {
       return comment !== commentToDelete
     })
     setComments(commentsWithoutDeletedOne)
-    // setComments(comments.filter((comment: any) => comment !== comment))
-    // console.log(comment)
   }
 
   const isNewCommentEmpty = newCommentText.length === 0;
@@ -86,7 +84,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
       </header>
 
       <div className={styles.content}>
-        {content.map((line: any) => {
+        {content.map((line) => {
           if (line.type === 'paragraph') {
             return <p key={line.content}>{line.content}</p>;
           } else if (line.type === 'link') {
@@ -117,7 +115,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
       </form>
 
       <div className={styles.commentList}>
-        {comments.map((comment: any) => (
+        {comments.map((comment) => (
           <Comment
             key={comment}
             content={comment}
